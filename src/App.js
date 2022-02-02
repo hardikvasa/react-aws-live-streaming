@@ -3,14 +3,13 @@ import videojs from 'video.js'
 import awsvideoconfig from './aws-video-exports'
 import './App.css'
 import 'video.js/dist/video-js.css'
+import Amplify, { Auth } from 'aws-amplify'
 import {
   AmplifyAuthenticator,
   AmplifySignOut,
   AmplifySignIn,
   AmplifySignUp,
 } from '@aws-amplify/ui-react'
-import awsConfig from './aws-exports'
-Amplify.configure(awsConfig)
 
 class VideoPlayer extends React.Component {
   componentDidMount() {
