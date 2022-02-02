@@ -3,6 +3,14 @@ import videojs from 'video.js'
 import awsvideoconfig from './aws-video-exports'
 import './App.css'
 import 'video.js/dist/video-js.css'
+import {
+  AmplifyAuthenticator,
+  AmplifySignOut,
+  AmplifySignIn,
+  AmplifySignUp,
+} from '@aws-amplify/ui-react'
+import awsConfig from './aws-exports'
+Amplify.configure(awsConfig)
 
 class VideoPlayer extends React.Component {
   componentDidMount() {
@@ -17,6 +25,16 @@ class VideoPlayer extends React.Component {
 
   render() {
     return (
+
+      <AmplifyAuthenticator>
+      <AmplifySignIn
+        headerText='AnyCompany video team, Sign-In with Your E-Mail Address'
+        slot='sign-in'
+      />
+      <AmplifySignUp
+        headerText='AnyCompany video team, Sign-In with Your E-Mail Address'
+        slot='sign-up'
+      />
       <>
         <div data-vjs-player style={{
             width: 960, height: 540
@@ -24,6 +42,12 @@ class VideoPlayer extends React.Component {
           <video  ref={(node) => { this.videoNode = node; }} className="video-js" />
         </div>
       </>
+
+      <div className='sign-out'>
+        <AmplifySignOut />
+      </div>
+    </AmplifyAuthenticator>
+
     );
   }
 }
